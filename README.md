@@ -1,2 +1,2 @@
-# Lab_4
- 
+# AVL-Tree
+Own implementation of AVL-Tree
