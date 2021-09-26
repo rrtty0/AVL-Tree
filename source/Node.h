@@ -1,4 +1,9 @@
 #pragma once
+#include <stdio.h>
+#include <tchar.h>
+#include <vector>
+#include <iostream>
+using namespace std;
 
 
 class Node

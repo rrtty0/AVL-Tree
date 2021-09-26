@@ -1,22 +1,24 @@
-#include "stdafx.h"
 #include "Tree.h"
 
 
 Tree::Tree() : root(nullptr), offset(40), maxrow(8)
 {
 	screen = new char*[maxrow];
-	for (int i = 0; i < maxrow; ++i)
+	for (int i = 0; i < maxrow; ++i) {
 		screen[i] = new char[80];
+		for (int j = 0; j < 80; ++j)
+			if (j == 79)
+				screen[i][j] = '\0';
+			else
+				screen[i][j] = '-';
+	}
 }
 
 
-Tree::Tree(int v1, ...) : Tree()
-{
-	int *ptr = &v1;
-	while (*ptr != -1)
-	{
-		add(*ptr);
-		++ptr;
+Tree::Tree(vector<int> arr) : Tree()
+{	
+	for (int i = 0; i < arr.size(); ++i) {
+		add(arr[i]);
 	}
 }
 
@@ -321,14 +323,16 @@ void Tree::clrscr()
 
 void Tree::outNodes(Node* v, int r, int c)
 {
-	if (r && c && (c < 80))
-		screen[r - 1][c - 1] = '0' + v->value;
-	if (r < maxrow)
-	{
-		if (v->left)
-			outNodes(v->left, r + 1, c - (offset >> r));
-		if (v->right)
-			outNodes(v->right, r + 1, c + (offset >> r));
+	if (v != nullptr) {
+		if (r && c && (c < 80))
+			screen[r - 1][c - 1] = '0' + v->value;
+		if (r < maxrow)
+		{
+			if (v->left)
+				outNodes(v->left, r + 1, c - (offset >> r));
+			if (v->right)
+				outNodes(v->right, r + 1, c + (offset >> r));
+		}
 	}
 }
 

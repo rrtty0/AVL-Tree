@@ -1,4 +1,5 @@
-#pragma once
+#include "Node.h"
+
 
 class Tree
 {
@@ -28,7 +29,7 @@ private:
 
 public:
 	Tree();                             //constructor with out arguments
-	Tree(int v1, ...);                  //constructor with elements
+	Tree(vector<int> arr);              //constructor with elements
 	Tree(const Tree&);                  //constructor of copy
 	Tree(Tree&&);                       //constructor with move
 	Tree& operator=(const Tree&);       //= with copy
